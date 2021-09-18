@@ -2,7 +2,7 @@
 
 public class GroundDetector : MonoBehaviour
 {
-    public bool IsGrounded { get; private set; }
+    public bool IsGrounded { get; private set; } = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

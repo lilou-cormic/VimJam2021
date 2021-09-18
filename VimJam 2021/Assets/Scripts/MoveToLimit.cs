@@ -12,7 +12,7 @@ public abstract class MoveToLimit : MonoBehaviour
         InvokeRepeating(nameof(Move), 0.02f, 0.02f);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (IsAtLimit())
             OnLimitReached();

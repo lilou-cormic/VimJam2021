@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioClip JumpSound = null;
 
+    private bool _isJumping = false;
+
     private float _jumpTimer = 0f;
 
     private bool _isDead = false;
@@ -38,7 +40,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Animator.SetFloat("speed", 1);
+        Animator.SetFloat("speed", Input.GetAxis("Horizontal"));
         Animator.SetBool("jump", !GroundDetector.IsGrounded);
 
         if (GroundDetector.IsGrounded)
@@ -48,15 +50,29 @@ public class Player : MonoBehaviour
                 // TODO kick
             }
 
-            // TODO Jump timer
-
             if (Input.GetButtonDown("Jump"))
             {
-                JumpSound.Play();
-
                 Animator.SetBool("jump", true);
 
-                rb.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
+                _jumpTimer = 0f;
+
+                _isJumping = true;
+
+                return;
+            }
+
+            if (_isJumping)
+            {
+                _jumpTimer += Time.deltaTime;
+
+                if (Input.GetButtonUp("Jump") || _jumpTimer >= 0.2f)
+                {
+                    JumpSound.Play();
+
+                    rb.AddForce(Vector2.up * (_jumpTimer < 0.08f ? 3f : (_jumpTimer > 0.17f ? 6f : 5f)), ForceMode2D.Impulse);
+
+                    _isJumping = false;
+                }
             }
         }
     }

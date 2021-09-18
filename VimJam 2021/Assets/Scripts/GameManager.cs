@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject PausePanel = null;
 
+    [SerializeField] Building _PrevBuilding = null;
+    private static Building PrevBuilding { get => Current._PrevBuilding; set => Current._PrevBuilding = value; }
+
     private bool _IsPaused = false;
     private bool IsPaused
     {
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour
         if (IsPaused || _gameIsEnding)
             return;
 
-        BuildingCollection.GetBuilding(20);
+        PrevBuilding = BuildingCollection.GetBuilding(PrevBuilding.Height, PrevBuilding.transform.position.x + PrevBuilding.Width + Random.Range(0.9f, 1.6f));
     }
 
     public static void Win()
