@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnBuilding), 1.5f, 1.25f);
+        InvokeRepeating(nameof(SpawnBuilding), 1.5f, 0.5f);
     }
 
     private void OnDestroy()
