@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
             return;
 
         PrevBuilding = BuildingCollection.GetBuilding(PrevBuilding.Height, PrevBuilding.transform.position.x + PrevBuilding.Width + Random.Range(0.9f, 1.6f));
+
+        // TODO Count enemies, to know when to end
+
+        if (Random.value > 0.5)
+            EnemyPool.GetEnemy(PrevBuilding.GetEnemySpawnPoint());
     }
 
     public static void Win()

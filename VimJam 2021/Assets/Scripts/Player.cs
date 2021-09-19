@@ -43,13 +43,13 @@ public class Player : MonoBehaviour
         Animator.SetFloat("speed", Input.GetAxis("Horizontal"));
         Animator.SetBool("jump", !GroundDetector.IsGrounded);
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Animator.SetTrigger("kick");
+        }
+
         if (GroundDetector.IsGrounded)
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                // TODO kick
-            }
-
             if (Input.GetButtonDown("Jump"))
             {
                 Animator.SetBool("jump", true);
@@ -75,5 +75,10 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //TODO Place enemy in a list to know which was defeated and which were not to have them with the boss at the end
     }
 }

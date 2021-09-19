@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4185199138934511221, guid: 6cf2722c79660ea49801e94a16d7a77d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6621657897470261620, guid: 6cf2722c79660ea49801e94a16d7a77d, type: 3}
       propertyPath: m_Name
       value: LargeBuildingB
