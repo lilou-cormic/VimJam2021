@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour
             GetComponent<MusicWithIntro>()?.Stop();
             //MusicManager.PlayLoseJingle();
 
+            ScoreManager.SetHighScore();
+
             yield return new WaitForSeconds(0.02f);
 
             MainMenu.LoadScene("GameOver");

@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 8652987998085485100}
+  DieSound: {fileID: 8300000, guid: 696e1ecaac70f1f4a87029c5db265f8a, type: 3}
 --- !u!61 &8652987998085485096
 BoxCollider2D:
   m_ObjectHideFlags: 0

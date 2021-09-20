@@ -15,6 +15,10 @@ public class MoveLeftAndPool : MoveToLimit
 
     protected override void OnLimitReached()
     {
-        GetComponent<IPoolable>()?.SetAsAvailable();
+        IPoolable poolable = GetComponent<IPoolable>();
+        if (poolable != null)
+            poolable.SetAsAvailable();
+        else
+            gameObject.SetActive(false);
     }
 }

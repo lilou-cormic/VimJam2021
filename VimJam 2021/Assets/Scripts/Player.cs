@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioClip JumpSound = null;
 
+    [SerializeField] AudioClip KickSound = null;
+
     private bool _isJumping = false;
 
     private float _jumpTimer = 0f;
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
         if (_isDead || GameManager.IsGamePaused)
             return;
 
-        if (transform.position.y < 0)
+        if (transform.position.y < -0.5f || transform.position.x < -0.5f)
         {
             _isDead = true;
             GameManager.GameOver();
@@ -46,6 +48,8 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Animator.SetTrigger("kick");
+
+            KickSound.Play();
         }
 
         if (GroundDetector.IsGrounded)
@@ -75,10 +79,5 @@ public class Player : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //TODO Place enemy in a list to know which was defeated and which were not to have them with the boss at the end
     }
 }
